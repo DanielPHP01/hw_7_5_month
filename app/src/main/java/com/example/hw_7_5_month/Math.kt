@@ -21,13 +21,15 @@ class Math {
         var result = ""
 
         if (a.isInteger() && b.isInteger()) {
-            result = (a.toInt() / b.toInt()).toString()
-        } else if (a.contains(".") || b.contains(".")) {
-            result = "Введите целые числа"
-        } else if (b == "0") {
-            result = "На ноль делить нельзя"
+            if (b.toInt() == 0 || a.toInt() == 0) {
+                result = "На ноль делить нельзя"
+            } else if ((a.toDouble() / b.toDouble()) % 1 == 0.0) {
+                result = (a.toInt() / b.toInt()).toString()
+            } else {
+                result = (a.toDouble() / b.toDouble()).toString()
+            }
         } else {
-            result = "Вы обязаны ввести числа"
+            result = "Введите целые числа"
         }
         return result
     }
